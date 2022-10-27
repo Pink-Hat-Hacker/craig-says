@@ -7,7 +7,40 @@ const firebaseConfig = {
     messagingSenderId: "1030182600492",
     appId: "1:1030182600492:web:eb134f469fbd83c871f689",
     measurementId: "G-XQ9W0VB35J"
-  };
+};
+const app = firebase.initializeApp(firebaseConfig);
+
+function login() {
+    var userName = document.getElementById("user_field").value;
+    var userPass = document.getElementById("pass_field").value;
+    //window.alert(userName + " " + userPass);
+    firebase.auth().signInWithEmailAndPassword(userName, userPass).catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        window.alert(errorMessage + " " + errorCode);
+    });
+}
+function signup() {
+    var userName = document.getElementById("user_field").value;
+    var userPass = document.getElementById("pass_field").value;
+    firebase.auth().createUserWithEmailAndPassword(userName, userPass).then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    }).catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        window.alert(errorMessage + " " + errorCode);
+  });
+}
+function logout() {
+    firebase.auth().signOut().then(function() {
+          //signout success
+    }).catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        window.alert(errorMessage + " " + errorCode);
+    });
+}
 
 let renderQuote = () => {
     $("#quotes_list").prepend(`
@@ -30,6 +63,36 @@ let renderPage = () => {
         <div class="header-title">
             <img id="eggman" src="../assets/EGGMAN.png">
             <h1>Craig says ... </h1>
+            <button onclick="logout()">Logout</button>
         </div>
     `)
 }
+
+let renderLogin = () => {
+    $("body").html(`
+        <div style="display:flex; justify-content:center;">
+            <div class="login">
+                <img src="../assets/EGGMAN.png"/>
+                <h2> CRAIG SAYS LOGIN</h2>
+                <div style="display:flex; justify-content:center;">
+                    <div class="login-fields">
+                        <input type="username" placeholder="username" id="user_field"/>
+                        <input type="password" placeholder="password" id="pass_field"/>
+                    </div>
+                </div>
+                <button onclick="login()"> Are you Craig? </button>
+                <p> - OTHERWISE - </p>
+                <button onclick="signup()"> Enter as Guest Egg </button>
+            </div>
+        </div>
+    `);
+}
+
+firebase.auth().onAuthStateChanged(user => {
+    if (!user){
+      renderLogin();
+    } else {
+      var user_email = firebase.auth().currentUser;
+      renderPage(user, user_email.email);
+    }
+})
