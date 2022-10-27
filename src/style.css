@@ -1,9 +1,11 @@
 html {
     background-color: #F0EAD6;
     font-family: 'Oswald', sans-serif;
+    color: #53514d;
 }
 body {
     background-color: #F0EAD6;
+    color: #53514d;
     font-family: 'Oswald', sans-serif;
 }
 .header-title {
@@ -20,11 +22,52 @@ body {
     padding-right: 15px;
 }
 
-.quotes {
+/* .quotes {
     background-color: #F0EAD6;
     padding-top: 20%;
     height: 800px;
     display: flex;
     justify-content: center;
     overflow-y: scroll;
+} */
+
+/* -------- LOGIN PAGE --------- */
+.login {
+    background-color: #F0EAD6;
+    text-align: center;
+    width: 400px;
+    margin: 0px auto;
+    /* margin-top: 150px; */
+    padding: 20px;
+}
+.login input {
+    color: #F8E7D0;
+    display: block;
+    border: 1px solid;
+    border-radius: 5px;
+    background: #D9CDB6;
+    padding: 15px;
+    outline: none;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.login input:focus {
+    border: 2px solid;
+}
+.login button {
+    background: #D9CDB6;
+    color: #53514d;
+    border: 0px;
+    border-radius: 5px;
+    padding: 15px;
+    display: block;
+    width: 108%;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+}
+.login button:hover {
+    background: #F8E7D0;
+    color: #53514d;
 }
