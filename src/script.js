@@ -14,3 +14,11 @@ let renderQuote = () => {
     `);
 }
 
+let renderPage = () => {
+    $("body").html(`
+        <div class="header-title">
+            <img id="eggman" src="../assets/EGGMAN.png">
+            <h1>Craig says ... </h1>
+        </div>
+    `)
+}
