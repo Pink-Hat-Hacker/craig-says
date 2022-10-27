@@ -1,0 +1,30 @@
+html {
+    background-color: #F0EAD6;
+    font-family: 'Oswald', sans-serif;
+}
+body {
+    background-color: #F0EAD6;
+    font-family: 'Oswald', sans-serif;
+}
+.header-title {
+    background-color: #F0EAD6;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline center;
+    padding-top: 2%;
+}
+.header-title img {
+    width: 5%;
+    height: 5%;
+    padding-right: 15px;
+}
+
+.quotes {
+    background-color: #F0EAD6;
+    padding-top: 20%;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll;
+}
