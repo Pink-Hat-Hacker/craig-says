@@ -13,3 +13,4 @@ let renderQuote = () => {
         </div>
     `);
 }
+
