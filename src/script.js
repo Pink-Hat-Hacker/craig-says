@@ -54,24 +54,25 @@ function logout() {
  */
 function submitPost() {
     var craigPost = document.getElementById("post").value;
-    renderQuote(craigPost)
+    var timestamp = new Date();
+    timestamp = timestamp.toLocaleString();
+    renderQuote(craigPost, timestamp);
 }
 /**
  * Render HTML functions
  */
-let renderQuote = (content) => {
+let renderQuote = (content, timestamp) => {
     $("#quotes_list").prepend(`
-        <div class="card">
+        <blockquote class="card">
             <div class="card-header">
                 Quote
             </div>
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                <p>${content}</p>
-                <footer class="blockquote-footer">The one and only egg <cite title="Source Title">Craig</cite></footer>
-                </blockquote>
-            </div>
-        </div>
+            <p>${content}</p>
+            <cite>
+                Craig
+            </cite>
+            <p><small class="text-muted">Tweeted at ${timestamp}</small></p>
+        </blockquote>
     `);
 }
 
@@ -91,8 +92,10 @@ let renderPage = () => {
         <div class="container">
             <textarea id="post" name="post" placeholder="so..." data-provide="markdown"></textarea>
             <br><br>
-            <button class="main-post-btn" onclick="submitPost()"> THOUGHTS REVEALED </button>
+            <button class="main-post-btn" onclick="submitPost()"> REVEAL THOUGHTS </button>
         </div>
+        <br>
+        <hr> 
 
         <!-- Quotes -->
         <div class="quotes">
