@@ -9,7 +9,7 @@ const firebaseConfig = {
     measurementId: "G-XQ9W0VB35J"
 };
 const app = firebase.initializeApp(firebaseConfig);
-
+var db = firebase.database();
 /**
  * Firebase Authentication Functions
  * 
@@ -53,25 +53,38 @@ function logout() {
  * Functionality Functions
  */
 function submitPost() {
-    var craigPost = document.getElementById("post").value;
+    var user = firebase.auth().currentUser;
+    var myRef = firebase.database().ref().child("admin/" + user.uid + "/posts/").push();
+    var postRef = firebase.database().ref("posts/").push();
     var timestamp = new Date();
     timestamp = timestamp.toLocaleString();
-    renderQuote(craigPost, timestamp);
+    var craigPost = document.getElementById("post").value;
+    const myObj = {
+        "content": craigPost,
+        "timestamp": timestamp, 
+        "authorID": user.uid,
+        "author": {
+            "email": user.email,
+            "nickname": user.email.substring(0, user.email.indexOf('@'))
+        }
+    };
+    postRef.set(myObj);
+    myRef.set(myObj);
 }
 /**
  * Render HTML functions
  */
-let renderQuote = (content, timestamp) => {
+let renderQuote = (tObj, uuid) => {
     $("#quotes_list").prepend(`
-        <blockquote class="card">
+        <blockquote class="card" data-uuid="${uuid}">
             <div class="card-header">
-                Quote
+                Quote #${tObj.quoteNumber}
             </div>
-            <p>${content}</p>
+            <p>${tObj.content}</p>
             <cite>
-                Craig
+                ~ Craig
             </cite>
-            <p><small class="text-muted">Tweeted at ${timestamp}</small></p>
+            <p><small class="text-muted">Tweeted at ${tObj.timestamp}</small></p>
         </blockquote>
     `);
 }
@@ -103,7 +116,14 @@ let renderPage = () => {
 
             </div>
         </div>
-    `)
+    `);
+
+    //here we can do your bawks or all bawks switch
+    let tweetRef = firebase.database().ref("/posts/");
+    tweetRef.on("child_added", (ss)=>{
+        let tObj = ss.val();
+        renderQuote(tObj, ss.key);
+    });
 }
 
 
