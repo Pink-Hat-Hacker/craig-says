@@ -10,6 +10,13 @@ const firebaseConfig = {
 };
 const app = firebase.initializeApp(firebaseConfig);
 
+/**
+ * Firebase Authentication Functions
+ * 
+ * login() checks to see if user exists
+ * signup() creates new user
+ * logout() sets to no current user
+ */
 function login() {
     var userName = document.getElementById("user_field").value;
     var userPass = document.getElementById("pass_field").value;
@@ -42,7 +49,17 @@ function logout() {
     });
 }
 
-let renderQuote = () => {
+/**
+ * Functionality Functions
+ */
+function submitPost() {
+    var craigPost = document.getElementById("post").value;
+    renderQuote(craigPost)
+}
+/**
+ * Render HTML functions
+ */
+let renderQuote = (content) => {
     $("#quotes_list").prepend(`
         <div class="card">
             <div class="card-header">
@@ -50,8 +67,8 @@ let renderQuote = () => {
             </div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                <p>${content}</p>
+                <footer class="blockquote-footer">The one and only egg <cite title="Source Title">Craig</cite></footer>
                 </blockquote>
             </div>
         </div>
@@ -69,8 +86,23 @@ let renderPage = () => {
                 <button onclick="logout()">LOGOUT</button>
             </div>
         </div>
+
+        <!--Main Tweeting Box-->
+        <div class="container">
+            <textarea id="post" name="post" placeholder="so..." data-provide="markdown"></textarea>
+            <br><br>
+            <button class="main-post-btn" onclick="submitPost()"> THOUGHTS REVEALED </button>
+        </div>
+
+        <!-- Quotes -->
+        <div class="quotes">
+            <div id="quotes_list">
+
+            </div>
+        </div>
     `)
 }
+
 
 let renderLogin = () => {
     $("body").html(`
