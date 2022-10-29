@@ -10,6 +10,7 @@ const firebaseConfig = {
 };
 const app = firebase.initializeApp(firebaseConfig);
 var db = firebase.database();
+
 /**
  * Firebase Authentication Functions
  * 
