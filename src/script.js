@@ -85,7 +85,7 @@ let renderQuote = (tObj, uuid) => {
             <cite>
                 ~ Craig
             </cite>
-            <p><small class="text-muted">Tweeted at ${tObj.timestamp}</small></p>
+            <p><small class="text-muted">Revealed at ${tObj.timestamp}</small></p>
         </blockquote>
     `);
 }
