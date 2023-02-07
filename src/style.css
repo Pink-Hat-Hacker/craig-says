@@ -8,6 +8,12 @@ body {
     color: #53514d;
     font-family: 'Oswald', sans-serif;
 }
+button + button {
+    margin-left: 10px;
+}
+input + button {
+    margin-bottom: 5px;
+}
 
 /* -------- LOGIN PAGE --------- */
 .login {
@@ -22,7 +28,7 @@ body {
     background: #D9CDB6;
     width: 50%;
     color: #53514d;
-    border: 0px;
+    border: 1px solid #D9CDB6;
     border-radius: 5px;
     padding: 15px;
     transition: 0.3s;
@@ -68,7 +74,7 @@ body {
 .header-title button {
     background: #D9CDB6;
     color: #53514d;
-    border: 0px;
+    border: 1px solid #D9CDB6;
     border-radius: 5px;
     padding: 15px;
     transition: 0.3s;
@@ -79,6 +85,10 @@ body {
     background: #F0EAD6;
     border: 1px solid #53514d;
     color: #53514d;
+}
+.header-title-logout {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 /* - middle page posting box- */
 .container {
@@ -96,7 +106,7 @@ body {
 .container button {
     background: #D9CDB6;
     color: #53514d;
-    border: 0px;
+    border: 1px solid #D9CDB6;
     border-radius: 5px;
     padding: 15px;
     transition: 0.3s;
@@ -132,3 +142,41 @@ body {
     max-width: 850px;
 }
 
+/* -------- NEW CREDENTIALS PAGE --------- */
+.change-credentials {
+    text-align: center;
+    padding-top: 10%;
+    width: 800px;
+}
+.change-credentials button {
+    background: #D9CDB6;
+    width: 100%;
+    color: #53514d;
+    border: 1px solid #D9CDB6;
+    border-radius: 5px;
+    padding: 15px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s; 
+}
+.change-credentials button:hover {
+    background: #F0EAD6;
+    border: 1px solid #53514d;
+    color: #53514d;
+}
+.remake-login-fields {
+    color: #F8E7D0;
+    display: grid;
+    width: 50%;
+}
+.remake-login-fields input {
+    border: 1px;
+    border-radius: 5px;
+    background: #D9CDB6;
+    padding: 15px;
+    outline: none;
+    margin-bottom: 20px;
+}
+.remake-login-fields input:focus {
+    border: 2px solid #D9CDB6;
+}

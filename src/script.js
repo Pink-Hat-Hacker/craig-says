@@ -37,7 +37,44 @@ function logout() {
         window.alert(errorMessage + " " + errorCode);
     });
 }
+function updateUserDetails () {
+    var newUserName = document.getElementById("new_user_field").value;
+    var newUserPass = document.getElementById("new_pass_field").value;
+    const user = firebase.auth().currentUser;
 
+    user.updateEmail(newUserName).then(() => {
+        //Update Successful
+    }).catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        window.alert(errorMessage + " " + errorCode);
+    });
+    user.updatePassword(newUserPass).then(() => {
+        // Update successful.
+    }).catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        window.alert(errorMessage + " " + errorCode);
+    });
+    logout();
+}
+
+let renderChangeUserDetails = () => {
+    $("body").html(`
+        <div style="display:flex; justify-content:center;">
+            <div class="change-credentials">
+                <h2> CRAIG SAYS CHANGE EMAIL &/|| PASSWORD</h2>
+                <div style="display:flex; justify-content:center;">
+                    <div class="remake-login-fields">
+                        <input type="username" placeholder="username" id="new_user_field"/>
+                        <input type="password" placeholder="password" id="new_pass_field"/>
+                    </div>
+                </div>
+                <button style="width: 50%;" onclick="updateUserDetails()"> Update </button>
+            </div>
+        </div>
+    `);
+}
 /**
  * Functionality Functions
  */
@@ -82,11 +119,12 @@ let renderPage = () => {
     $("body").html(`
         <div class="header-title">
             <div class="header-title-content">
-                <img id="eggman" src="../assets/EGGMAN.png">
+                <img id="eggman" src="assets/EGGMAN.png">
                 <h1>Craig says ... </h1>
             </div>
             <div class="header-title-logout">
                 <button onclick="logout()">LOGOUT</button>
+                <button onclick="renderChangeUserDetails()">CHANGE LOGIN INFO</button>
             </div>
         </div>
 
