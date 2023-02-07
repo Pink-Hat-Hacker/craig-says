@@ -71,6 +71,9 @@ let renderChangeUserDetails = () => {
                     </div>
                 </div>
                 <button style="width: 50%;" onclick="updateUserDetails()"> Update </button>
+                <br>
+                <p style="color: #53514d"> - nvm - </p>
+                <button style="width: 50%;" onclick="renderPage()"> Back </button>
             </div>
         </div>
     `);
