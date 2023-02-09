@@ -57,12 +57,6 @@ function updateUserDetails () {
     });
     logout();
 }
-function deleteQuote(uuid) {
-    console.log(uuid);
-    $("blockquote[data-uuid=" + uuid + "]").remove();
-    let quoteRef = rtdb.ref(db, "posts/" + uuid);
-    rtdb.remove(quoteRef); 
-}
 
 let renderChangeUserDetails = () => {
     $("body").html(`
