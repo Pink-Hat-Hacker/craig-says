@@ -10,7 +10,6 @@ const firebaseConfig = {
 };
 const app = firebase.initializeApp(firebaseConfig);
 var db = firebase.database();
-
 /**
  * Firebase Authentication Functions
  * 
@@ -58,6 +57,12 @@ function updateUserDetails () {
     });
     logout();
 }
+function deleteQuote(uuid) {
+    console.log(uuid);
+    $("blockquote[data-uuid=" + uuid + "]").remove();
+    let quoteRef = rtdb.ref(db, "posts/" + uuid);
+    rtdb.remove(quoteRef); 
+}
 
 let renderChangeUserDetails = () => {
     $("body").html(`
@@ -104,18 +109,29 @@ function submitPost() {
  * Render HTML functions
  */
 let renderQuote = (tObj, uuid) => {
+    var user = firebase.auth().currentUser;
     $("#quotes_list").prepend(`
         <blockquote class="card" data-uuid="${uuid}">
-            <div class="card-header">
-                Quote #${tObj.quoteNumber}
-            </div>
-            <p>${tObj.content}</p>
+            <h3>${tObj.content}</h3>
             <cite>
                 ~ Craig
             </cite>
             <p><small class="text-muted">Revealed at ${tObj.timestamp}</small></p>
+            <div class="delete-button"></div>
         </blockquote>
     `);
+    if (user) {
+        $('.delete-button').html(`<button id="deletebutton" data-uuid="${uuid}"><img src="assets/trash.png"></button>`);
+    }
+    $("#deletebutton").off("click");
+    $("#deletebutton").on("click", (evt) => {
+        let quoteID = $(evt.currentTarget).attr("data-uuid");
+        $("div[data-uuid=" + quoteID+ "]").remove();
+        let quoteIdRef = firebase.database().ref("posts/" + quoteID);
+        quoteIdRef.remove();
+        console.log(uuid + " has been removed");
+        location.reload();
+    });
 }
 
 let renderPage = () => {

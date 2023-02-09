@@ -141,6 +141,17 @@ input + button {
     min-width: 850px;
     max-width: 850px;
 }
+.quotes img {
+    width: 20px;
+}
+.quotes button {
+    border: 0px;
+    background-color: #D9CDB6;
+}
+.quotes button:hover {
+    border: 0px;
+    background-color: #9d1d06;
+}
 
 /* -------- NEW CREDENTIALS PAGE --------- */
 .change-credentials {
