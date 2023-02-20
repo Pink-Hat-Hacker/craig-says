@@ -111,20 +111,20 @@ let renderQuote = (tObj, uuid) => {
                 ~ Craig
             </cite>
             <p><small class="text-muted">Revealed at ${tObj.timestamp}</small></p>
-            <div class="delete-button"></div>
+            <div class="delete-button-${uuid}"></div>
         </blockquote>
     `);
     if (user) {
-        $('.delete-button').html(`<button id="deletebutton" data-uuid="${uuid}"><img src="assets/trash.png"></button>`);
+        $('.delete-button-'+uuid).prepend(`<button id="deletebutton" delete-data-uuid="${uuid}"><img src="assets/trash.png"></button>`);
     }
     $("#deletebutton").off("click");
     $("#deletebutton").on("click", (evt) => {
-        let quoteID = $(evt.currentTarget).attr("data-uuid");
-        $("div[data-uuid=" + quoteID+ "]").remove();
+        let quoteID = $(evt.currentTarget).attr("delete-data-uuid");
+        $("blockquote[data-uuid=" + quoteID + "]").remove();
         let quoteIdRef = firebase.database().ref("posts/" + quoteID);
         quoteIdRef.remove();
         console.log(uuid + " has been removed");
-        location.reload();
+        //location.reload();
     });
 }
 

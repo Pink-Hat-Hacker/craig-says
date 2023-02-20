@@ -141,6 +141,9 @@ input + button {
     min-width: 850px;
     max-width: 850px;
 }
+/* .card blockquote {
+    display: flex;
+} */
 .quotes img {
     width: 20px;
 }
