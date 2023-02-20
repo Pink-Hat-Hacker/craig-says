@@ -10,11 +10,11 @@ const firebaseConfig = {
 };
 const app = firebase.initializeApp(firebaseConfig);
 var db = firebase.database();
+
 /**
  * Firebase Authentication Functions
  * 
  * login() checks to see if user exists
- * signup() creates new user
  * logout() sets to no current user
  */
 function login() {
@@ -36,6 +36,14 @@ function logout() {
         window.alert(errorMessage + " " + errorCode);
     });
 }
+
+/**
+ * Updates User Credentials/Details
+ * 
+ * takes in the information from HTML fields
+ * sends to database
+ * changes credtentials
+ */
 function updateUserDetails () {
     var newUserName = document.getElementById("new_user_field").value;
     var newUserPass = document.getElementById("new_pass_field").value;
@@ -58,6 +66,15 @@ function updateUserDetails () {
     logout();
 }
 
+/**
+ * Change User Credentials
+ * 
+ * Page that allows admin to change their
+ * username
+ * password
+ * 
+ * uses updateUserDetails
+ */
 let renderChangeUserDetails = () => {
     $("body").html(`
         <div style="display:flex; justify-content:center;">
@@ -77,8 +94,13 @@ let renderChangeUserDetails = () => {
         </div>
     `);
 }
+
 /**
- * Functionality Functions
+ * Submit the Quote
+ * 
+ * takes in the information from the textarea
+ * creates a quote object
+ * sends this reference to the database
  */
 function submitPost() {
     var user = firebase.auth().currentUser;
@@ -99,8 +121,15 @@ function submitPost() {
     postRef.set(myObj);
     myRef.set(myObj);
 }
+
 /**
- * Render HTML functions
+ * Render Quote
+ * 
+ * makes a quote box using the object and uuid passed in
+ * if admin, can delete a quote
+ * 
+ * delete checks uuid that matches the quote
+ * deletes the HTML element as well as the database entry
  */
 let renderQuote = (tObj, uuid) => {
     var user = firebase.auth().currentUser;
@@ -128,6 +157,12 @@ let renderQuote = (tObj, uuid) => {
     });
 }
 
+/**
+ * Render Admin page
+ * 
+ * Page is only available to admins
+ * Has logout, change credentials, delete, and text area
+ */
 let renderPage = () => {
     $("body").html(`
         <div class="header-title">
@@ -141,7 +176,7 @@ let renderPage = () => {
             </div>
         </div>
 
-        <!--Main Tweeting Box-->
+        <!--Main Quote Creation Box-->
         <div class="container">
             <textarea id="post" name="post" placeholder="so..." data-provide="markdown"></textarea>
             <br><br>
@@ -158,14 +193,21 @@ let renderPage = () => {
         </div>
     `);
 
-    //here we can do your bawks or all bawks switch
-    let tweetRef = firebase.database().ref("/posts/");
-    tweetRef.on("child_added", (ss)=>{
+    // Grabs quotes from database and sends to RenderQuote
+    let quoteRef = firebase.database().ref("/posts/");
+    quoteRef.on("child_added", (ss)=>{
         let tObj = ss.val();
         renderQuote(tObj, ss.key);
     });
 }
 
+/**
+ * Login Page
+ * 
+ * asks for credentials 
+ * Only Admins can enter renderPage
+ * Guests can press Enter as guest egg for renderGuestPage
+ */
 let renderLogin = () => {
     $("body").html(`
         <div style="display:flex; justify-content:center;">
@@ -186,6 +228,13 @@ let renderLogin = () => {
     `);
 }
 
+/**
+ * Guest page
+ * 
+ * renders Quotes on page
+ * Does not have a textarea for quote creation
+ * Does not have logout, change login, or delete buttons
+ */
 function renderGuestPage() {
     $("body").html(`
         <div class="header-title">
@@ -202,9 +251,10 @@ function renderGuestPage() {
             </div>
         </div>
     `);
-    //here we can do your bawks or all bawks switch
-    let tweetRef = firebase.database().ref("/posts/");
-    tweetRef.on("child_added", (ss)=>{
+
+    // Grabs quotes from database and sends to RenderQuote
+    let quoteRef = firebase.database().ref("/posts/");
+    quoteRef.on("child_added", (ss)=>{
         let tObj = ss.val();
         renderQuote(tObj, ss.key);
     });
