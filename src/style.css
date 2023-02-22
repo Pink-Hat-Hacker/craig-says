@@ -72,6 +72,7 @@ input + button {
 }
 
 .header-title button {
+    width: 200px;
     background: #D9CDB6;
     color: #53514d;
     border: 1px solid #D9CDB6;
@@ -101,9 +102,9 @@ input + button {
     height: 180px;
     border-radius: 5px;
     font-size: 20px;
-    resize: none;
 }
 .container button {
+    width: 400px;
     background: #D9CDB6;
     color: #53514d;
     border: 1px solid #D9CDB6;

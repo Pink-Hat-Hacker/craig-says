@@ -178,7 +178,7 @@ let renderPage = () => {
 
         <!--Main Quote Creation Box-->
         <div class="container">
-            <textarea id="post" name="post" placeholder="so..." data-provide="markdown"></textarea>
+            <textarea id="post" name="post" placeholder="so..."></textarea>
             <br><br>
             <button class="main-post-btn" onclick="submitPost()"> REVEAL THOUGHTS </button>
         </div>
