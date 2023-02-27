@@ -16,4 +16,5 @@
 [Courier Prime](https://fonts.google.com/specimen/Courier+Prime)
 
 ### Logo
-![Craig Man Egg](src/assets/EGGMAN.png)
+![Craig Man Egg](src/assets/EGGMAN.png )
+<img src="src/assets/EGGMAN.png" width="50" height="50" />
