@@ -165,30 +165,36 @@ let renderQuote = (tObj, uuid) => {
  */
 let renderPage = () => {
     $("body").html(`
-        <div class="header-title">
-            <div class="header-title-content">
-                <img id="eggman" src="assets/EGGMAN.png">
-                <h1>Craig says ... </h1>
-            </div>
-            <div class="header-title-logout">
-                <button onclick="logout()">LOGOUT</button>
-                <button onclick="renderChangeUserDetails()">CHANGE LOGIN INFO</button>
+        <div class="split left">
+            <div class="centered">
+                <div class="header-title">
+                    <div class="header-title-content">
+                        <img id="eggman" src="assets/EGGMAN.png">
+                        <h1>Craig says ... </h1>
+                    </div>
+                    <div class="header-title-logout">
+                        <button onclick="logout()">LOGOUT</button>
+                        <button onclick="renderChangeUserDetails()">CHANGE LOGIN INFO</button>
+                    </div>
+                </div>
+
+                <!--Main Quote Creation Box-->
+                <div class="container">
+                    <textarea id="post" name="post" placeholder="so..."></textarea>
+                    <br><br>
+                    <button class="main-post-btn" onclick="submitPost()"> REVEAL THOUGHTS </button>
+                </div>
             </div>
         </div>
 
-        <!--Main Quote Creation Box-->
-        <div class="container">
-            <textarea id="post" name="post" placeholder="so..."></textarea>
-            <br><br>
-            <button class="main-post-btn" onclick="submitPost()"> REVEAL THOUGHTS </button>
-        </div>
-        <br>
-        <hr> 
+        <div class="split right">
+            <div class="centered">
+                <!-- Quotes -->
+                <div class="quotes">
+                    <div id="quotes_list">
 
-        <!-- Quotes -->
-        <div class="quotes">
-            <div id="quotes_list">
-
+                    </div>
+                </div>
             </div>
         </div>
     `);

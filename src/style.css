@@ -7,12 +7,38 @@ body {
     background-color: #F0EAD6;
     color: #53514d;
     font-family: 'Oswald', sans-serif;
+    display: flexbox;
 }
 button + button {
     margin-left: 10px;
 }
 input + button {
     margin-bottom: 5px;
+}
+
+/* -------- SPLIT ---------- */
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* -------- LOGIN PAGE --------- */
@@ -98,8 +124,8 @@ input + button {
 }
 .container textarea {
     margin-top: 10px;
-    width: 400px;
-    height: 180px;
+    width: 410px;
+    height: 250px;
     border-radius: 5px;
     font-size: 20px;
 }
@@ -138,9 +164,9 @@ input + button {
     
     position: relative;
     overflow: hidden;
-    min-height: 120px;
-    min-width: 850px;
-    max-width: 850px;
+    min-height: 100px;
+    min-width: 600px;
+    max-width: 800px;
 }
 /* .card blockquote {
     display: flex;
