@@ -1,13 +1,20 @@
+:root {
+    --eggshell: #F0EAD6;
+    --textcolor: #53514d;
+    --accent:#005B47;
+    --hovercolor: #D9CDB6;
+    --originaltextcolor: #53514d;
+}
+
 html {
-    background-color: #F0EAD6;
+    background-color: var(--eggshell);
     font-family: 'Oswald', sans-serif;
-    color: #53514d;
+    color: var(--textcolor);
 }
 body {
-    background-color: #F0EAD6;
-    color: #53514d;
+    background-color: var(--eggshell);
+    color: var(--textcolor);
     font-family: 'Oswald', sans-serif;
-    display: flexbox;
 }
 button + button {
     margin-left: 10px;
@@ -51,10 +58,10 @@ input + button {
     width: 80px;
 }
 .login button {
-    background: #D9CDB6;
+    background: var(--hovercolor);
     width: 50%;
-    color: #53514d;
-    border: 1px solid #D9CDB6;
+    color: var(--textcolor);
+    border: 1px solid var(--hovercolor);
     border-radius: 5px;
     padding: 15px;
     transition: 0.3s;
@@ -62,9 +69,9 @@ input + button {
     -moz-transition: 0.3s; 
 }
 .login button:hover {
-    background: #F0EAD6;
-    border: 1px solid #53514d;
-    color: #53514d;
+    background: var(--eggshell);
+    border: 1px solid var(--eggshell);
+    color: var(--textcolor);
 }
 .login-fields {
     color: #F8E7D0;
@@ -74,13 +81,13 @@ input + button {
 .login-fields input {
     border: 1px;
     border-radius: 5px;
-    background: #D9CDB6;
+    background: var(--hovercolor);
     padding: 15px;
     outline: none;
     margin-bottom: 20px;
 }
 .login-fields input:focus {
-    border: 2px solid #D9CDB6;
+    border: 2px solid var(--hovercolor);
 }
 
 /* - MAIN PAGE - */
@@ -99,9 +106,9 @@ input + button {
 
 .header-title button {
     width: 200px;
-    background: #D9CDB6;
-    color: #53514d;
-    border: 1px solid #D9CDB6;
+    background: var(--hovercolor);
+    color: var(--textcolor);
+    border: 1px solid var(--hovercolor);
     border-radius: 5px;
     padding: 15px;
     transition: 0.3s;
@@ -110,8 +117,8 @@ input + button {
 }
 .header-title button:hover {
     background: #F0EAD6;
-    border: 1px solid #53514d;
-    color: #53514d;
+    border: 1px solid var(--textcolor);
+    color: var(--textcolor);
 }
 .header-title-logout {
     padding-top: 10px;
@@ -131,9 +138,9 @@ input + button {
 }
 .container button {
     width: 400px;
-    background: #D9CDB6;
-    color: #53514d;
-    border: 1px solid #D9CDB6;
+    background: var(--hovercolor);
+    color: var(--textcolor);
+    border: 1px solid var(--hovercolor);
     border-radius: 5px;
     padding: 15px;
     transition: 0.3s;
@@ -142,8 +149,8 @@ input + button {
 }
 .container button:hover {
     background: #F0EAD6;
-    border: 1px solid #53514d;
-    color: #53514d;
+    border: 1px solid var(--textcolor);
+    color: var(--textcolor);
 }
 /* - bottom page quotes container - */
 .quotes {
@@ -155,12 +162,12 @@ input + button {
 }
 .card {
     background: #ffff;
-    color: #53514d;
+    color: var(--textcolor);
     
     padding: 20px;
     padding-left: 50px;
     box-sizing: border-box;
-    box-shadow: 0 2px 4px rgba(#53514d, 0.12);
+    box-shadow: 0 2px 4px rgba(var(--textcolor), 0.12);
     
     position: relative;
     overflow: hidden;
@@ -176,7 +183,7 @@ input + button {
 }
 .quotes button {
     border: 0px;
-    background-color: #D9CDB6;
+    background-color: var(--hovercolor);
 }
 .quotes button:hover {
     border: 0px;
@@ -190,10 +197,10 @@ input + button {
     width: 800px;
 }
 .change-credentials button {
-    background: #D9CDB6;
+    background: var(--hovercolor);
     width: 100%;
-    color: #53514d;
-    border: 1px solid #D9CDB6;
+    color: var(--textcolor);
+    border: 1px solid var(--hovercolor);
     border-radius: 5px;
     padding: 15px;
     transition: 0.3s;
@@ -202,8 +209,8 @@ input + button {
 }
 .change-credentials button:hover {
     background: #F0EAD6;
-    border: 1px solid #53514d;
-    color: #53514d;
+    border: 1px solid var(--textcolor);
+    color: var(--textcolor);
 }
 .remake-login-fields {
     color: #F8E7D0;
@@ -213,11 +220,11 @@ input + button {
 .remake-login-fields input {
     border: 1px;
     border-radius: 5px;
-    background: #D9CDB6;
+    background: var(--hovercolor);
     padding: 15px;
     outline: none;
     margin-bottom: 20px;
 }
 .remake-login-fields input:focus {
-    border: 2px solid #D9CDB6;
+    border: 2px solid var(--hovercolor);
 }
